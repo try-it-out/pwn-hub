@@ -1,0 +1,17 @@
+name: Vuln 1 Test
+
+on:
+  issues:
+    types:
+    - opened
+    - edited
+    - milestoned
+
+jobs:
+  vuln-runner-1:
+    name: Vuln Runner 1
+    runs-on: ubuntu-latest
+    env:
+      SOME_SECRET: Hijack123
+    steps:
+    - run: echo "${{ github.event.issue.body }}""
