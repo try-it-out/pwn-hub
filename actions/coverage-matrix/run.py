@@ -362,7 +362,13 @@ def upload_to_s3(content_dir: str):
   for dirpath, dirnames, filenames in os.walk(content_dir):
     for filename in filenames:
       path = os.path.join(dirpath, filename)
-      S3_CLIENT.upload_file(path, BUCKET_NAME, filename)
+      ext = Path(filename).suffix
+      if ext == '.html':
+        S3_CLIENT.upload_file(path, BUCKET_NAME, filename, ExtraArgs={'Metadata': {'Content-Type': 'text/html'}})
+      elif ext == '.svg':
+        S3_CLIENT.upload_file(path, BUCKET_NAME, filename, ExtraArgs={'Metadata': {'Content-Type': 'image/svg+xml'}})
+      else:
+        S3_CLIENT.upload_file(path, BUCKET_NAME, filename)
 
 if __name__ == "__main__":
   repos = clone_repos()
