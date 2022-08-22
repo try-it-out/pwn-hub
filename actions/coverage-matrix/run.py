@@ -203,8 +203,8 @@ def is_higsignal(rule: Dict[str, Any], path: str) -> bool:
   result = is_security(path) and (is_high_confidence(rule) or (is_taint(rule) and not is_audit(path)))
   if result:
     print(f"accepted: {path}")
-  else:
-    print(f"not accd: {path}")
+  # else:
+    # print(f"not accd: {path}")
   return result
 
 def is_lowsignal(rule: Dict[str, Any], path: str) -> bool:
@@ -286,8 +286,9 @@ def print_results(coverage_maps: Dict[str, Any], output_directory: str = '.'):
 
 def generate_coverage_matrix(dirs: List[str], is_filtered: Callable = is_higsignal):
   coverage_map = {}
-
+  print(f"dirs to scan: {dirs}")
   for directory in dirs:
+    print(f"walking dir: {directory}")
     for dirpath, dirnames, filenames in os.walk(directory):
       for filename in filenames:
         path = os.path.join(dirpath, filename)
