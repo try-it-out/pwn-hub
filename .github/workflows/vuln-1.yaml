@@ -13,5 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SOME_SECRET: Hijack123
+      GITHUB_COM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-    - run: echo "${{ github.event.issue.body }}""
+    - run: echo "${{ github.event.issue.body }}"
