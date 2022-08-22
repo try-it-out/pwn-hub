@@ -1,0 +1,11 @@
+name: Coverage Matrix Generator
+description: 'it generates coverage matrix for Tier 1 rules'
+inputs:
+  bucket-name:
+    description: S3 Bucket name
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.bucket-name }}

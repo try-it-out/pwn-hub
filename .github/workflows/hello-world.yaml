@@ -11,6 +11,6 @@ jobs:
       uses: actions/checkout@v3
     - run: echo "Hello world"
     - name: simple docker action
-      uses: ./actions/docker-action/
+      uses: ./actions/coverage-matrix/
       with:
-        who-to-greet: Vasilii
+        bucket-name: 's3BucketSuperName'
