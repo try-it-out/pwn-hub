@@ -326,7 +326,9 @@ def generate_coverage_matrix(dirs: List[str], is_filtered: Callable = is_higsign
 
 def produce_html_matrix(dirs: List[str], output_directory: str = 'output'):
   matrix_hs = generate_coverage_matrix(dirs=dirs, is_filtered=is_higsignal)
+  print(f"----- done with highsignal")
   matrix_low = generate_coverage_matrix(dirs=dirs, is_filtered=is_lowsignal)
+  print(f"----- done with lowsignal")
 
   coverage = {
     'High confidence + Taint': {
