@@ -7,6 +7,8 @@ jobs:
   yoyoyo:
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout
+      uses: actions/checkout@v3
     - run: echo "Hello world"
     - name: simple docker action
       uses: ./actions/docker-action/
