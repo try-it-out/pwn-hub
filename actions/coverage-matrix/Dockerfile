@@ -1,6 +1,6 @@
 FROM python:3.7-alpine
 
-RUN yum install -y git && yum clean all
+RUN apk add --no-cache git
 COPY requirements.txt ./
 RUN pip install -r requirements.txt --no-cache-dir
 
