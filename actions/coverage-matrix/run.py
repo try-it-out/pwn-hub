@@ -200,7 +200,12 @@ def is_high_confidence(rule: Dict[str, Any]) -> bool:
   return False
 
 def is_higsignal(rule: Dict[str, Any], path: str) -> bool:
-  return is_security(path) and (is_high_confidence(rule) or (is_taint(rule) and not is_audit(path)))
+  result = is_security(path) and (is_high_confidence(rule) or (is_taint(rule) and not is_audit(path)))
+  if result:
+    print(f"accepted: {path}")
+  else:
+    print(f"not accd: {path}")
+  return result
 
 def is_lowsignal(rule: Dict[str, Any], path: str) -> bool:
   return is_security(path) and not is_higsignal(rule=rule, path=path)
@@ -320,7 +325,7 @@ def generate_coverage_matrix(dirs: List[str], is_filtered: Callable = is_higsign
   return coverage_map
 
 def produce_html_matrix(dirs: List[str], output_directory: str = 'output'):
-  matrix_hs = generate_coverage_matrix(dirs=dirs)
+  matrix_hs = generate_coverage_matrix(dirs=dirs, is_filtered=is_higsignal)
   matrix_low = generate_coverage_matrix(dirs=dirs, is_filtered=is_lowsignal)
 
   coverage = {
@@ -374,11 +379,6 @@ if __name__ == "__main__":
   repos = clone_repos()
   results_path = '/tmp/output'
 
-
-  print(f"lets checkout to {repos}")
-  for dr in repos:
-    print([x[0] for x in os.walk(dr)])
-  
   produce_html_matrix(dirs=repos, output_directory=results_path)
 
   upload_to_s3(content_dir=results_path)
