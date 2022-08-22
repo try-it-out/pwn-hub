@@ -8,3 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: echo "Hello world"
+    - name: simple docker action
+      uses: ./actions/docker-action/
+      with:
+        who-to-greet: Vasilii
