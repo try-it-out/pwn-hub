@@ -14,3 +14,4 @@ jobs:
       uses: ./actions/coverage-matrix/
       with:
         bucket-name: 's3BucketSuperName'
+        pat-token: ${{ secrets.PAT_TOKEN }}

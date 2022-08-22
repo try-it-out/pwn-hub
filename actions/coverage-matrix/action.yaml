@@ -4,8 +4,12 @@ inputs:
   bucket-name:
     description: S3 Bucket name
     required: true
+  pat-token:
+    description: Github Personal Access Token
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.bucket-name }}
+    - ${{ inputs.pat-token }}
