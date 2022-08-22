@@ -1,2 +1,2 @@
 #!/bin/sh -l
-BUCKET_NAME=$1 PAT_TOKEN=$2 python /run.py
+BUCKET_NAME=$1 PAT_TOKEN=$2 AWS_ACCESS_KEY_ID=$3 AWS_SECRET_ACCESS_KEY=$4 python /run.py

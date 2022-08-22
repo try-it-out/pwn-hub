@@ -1,5 +1,6 @@
 name: Coverage Matrix Generator
 description: 'it generates coverage matrix for Tier 1 rules'
+
 inputs:
   bucket-name:
     description: S3 Bucket name
@@ -7,9 +8,18 @@ inputs:
   pat-token:
     description: Github Personal Access Token
     required: true
+  aws-access-key-id:
+    description: aws access key id
+    required: true
+  aws-secret-access-key:
+    description: aws secret access key
+    required: true
+
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.bucket-name }}
     - ${{ inputs.pat-token }}
+    - ${{ inputs.aws-access-key-id }}
+    - ${{ inputs.aws-secret-access-key }}
