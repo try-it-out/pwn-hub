@@ -3,3 +3,4 @@ seaborn
 matplotlib
 jinja2
 pyyaml
+boto3
