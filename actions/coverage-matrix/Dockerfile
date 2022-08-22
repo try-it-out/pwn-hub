@@ -1,8 +1,7 @@
-FROM centos:centos7
+FROM python:3.8
 
-RUN yum -y install epel-release && yum clean all
-RUN yum -y install python-pip && yum clean all
-RUN yum install -y git && yum clean all
+RUN apt update
+RUN apt install -y git
 
 COPY requirements.txt ./
 RUN pip install -r requirements.txt --no-cache-dir
