@@ -10,10 +10,3 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     - run: echo "Hello world"
-    - name: simple docker action
-      uses: ./actions/coverage-matrix/
-      with:
-        bucket-name: 'sr-homies-tier1-coverage'
-        pat-token: ${{ secrets.PAT_TOKEN }}
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
