@@ -350,6 +350,7 @@ def clone_repos() -> List[str]:
     parsed_url = parsed_url._replace(netloc=f"{PAT_TOKEN}@github.com")
     auth_url = urlunparse(parsed_url)
 
+    print(f"lets checkout to {output_dir}")
     p = subprocess.run(
       ["git", "clone", "--filter=tree:0", auth_url, output_dir], capture_output=True
     )
