@@ -172,6 +172,10 @@ def get_framework(path: str) -> str:
   s = path.split(os.path.sep)
   if len(s) > 2:
     lang = s[0]
+    # while in `semgrep-rules-proprietary` the first folder gonna be "paid/paid" or "login/whatever"
+    if (lang == 'paid' or lang == 'login') and len(s) > 3:
+      lang = s[2]
+
     if "contrib" in path:
       return s[s.index("contrib")+1].strip()
     return s[s.index(lang)+1].strip()
@@ -331,9 +335,7 @@ def generate_coverage_matrix(dirs: List[str], is_filtered: Callable = is_higsign
 
 def produce_html_matrix(dirs: List[str], output_directory: str = 'output'):
   matrix_hs = generate_coverage_matrix(dirs=dirs, is_filtered=is_higsignal)
-  print(f"----- done with highsignal")
   matrix_low = generate_coverage_matrix(dirs=dirs, is_filtered=is_lowsignal)
-  print(f"----- done with lowsignal")
 
   coverage = {
     'High confidence + Taint': {
