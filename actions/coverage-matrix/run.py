@@ -160,6 +160,10 @@ def get_lang(path: str) -> str:
   parts = path.split(os.path.sep)
   if len(parts) > 1:
     lang = parts[0].strip()
+    # while in `semgrep-rules-proprietary` the first folder gonna be "paid/paid" or "login/whatever"
+    if (lang == 'paid' or lang == 'login') and len(parts) > 2:
+      lang = parts[2]
+
     if lang in supported_langs:
       return lang
   return None
