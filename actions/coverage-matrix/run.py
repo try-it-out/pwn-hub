@@ -364,9 +364,9 @@ def upload_to_s3(content_dir: str):
       path = os.path.join(dirpath, filename)
       ext = Path(filename).suffix
       if ext == '.html':
-        S3_CLIENT.upload_file(path, BUCKET_NAME, filename, ExtraArgs={'ContentType': "text/html", 'ACL': "public-read"})
+        S3_CLIENT.upload_file(path, BUCKET_NAME, filename, ExtraArgs={'ContentType': "text/html"})
       elif ext == '.svg':
-        S3_CLIENT.upload_file(path, BUCKET_NAME, filename, ExtraArgs={'ContentType': "image/svg+xml", 'ACL': "public-read"})
+        S3_CLIENT.upload_file(path, BUCKET_NAME, filename, ExtraArgs={'ContentType': "image/svg+xml"})
       else:
         S3_CLIENT.upload_file(path, BUCKET_NAME, filename)
 
