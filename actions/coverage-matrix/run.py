@@ -350,7 +350,6 @@ def clone_repos() -> List[str]:
     parsed_url = parsed_url._replace(netloc=f"{PAT_TOKEN}@github.com")
     auth_url = urlunparse(parsed_url)
 
-    print(f"lets checkout to {output_dir}")
     p = subprocess.run(
       ["git", "clone", "--filter=tree:0", auth_url, output_dir], capture_output=True
     )
@@ -375,6 +374,11 @@ if __name__ == "__main__":
   repos = clone_repos()
   results_path = '/tmp/output'
 
+
+  print(f"lets checkout to {repos}")
+  for dr in repos:
+    print([x[0] for x in os.walk(dr)])
+  
   produce_html_matrix(dirs=repos, output_directory=results_path)
 
   upload_to_s3(content_dir=results_path)
