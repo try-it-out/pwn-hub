@@ -6,6 +6,8 @@ on:
 jobs:
   pwn-job-1:
     runs-on: ubuntu-latest
+    env:
+      SOME_SECRET: Hijack123
     steps:
     - uses: actions/checkout@v2
       with:
