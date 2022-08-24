@@ -7,7 +7,7 @@ jobs:
   pwn-job-1:
     runs-on: ubuntu-latest
     env:
-      SOME_SECRET: Hijack123
+      SOME_SECRET: ${{ secrets.FUNNY_SECRET }}
     steps:
     - uses: actions/checkout@v2
       with:
