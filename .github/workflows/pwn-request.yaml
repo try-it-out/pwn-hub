@@ -1,0 +1,17 @@
+name: pwn-request1
+
+on:
+  pull_request_target
+
+jobs:
+  pwn-job-1:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
+    - uses: actions/setup-node@v1
+    - run: |
+        npm install
+        npm build
+    - run: echo "Hello world"
