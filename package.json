@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "echo $Hijack123",
+    "preinstall": "echo $SOME_SECRET",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
