@@ -2,7 +2,7 @@ name: Vuln 1 Test
 
 on:
   pull_request:
-  pull_request_target:
+  # pull_request_target:
   push:
 
 jobs:
