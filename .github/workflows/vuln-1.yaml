@@ -15,4 +15,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-    - run: ls -lah
+    - run: |
+        echo "GITHUB_EVENT_NAME = $GITHUB_EVENT_NAME"
+        ls -lah
