@@ -1,7 +1,8 @@
 name: pwn-request1
 
 on:
-  pull_request_target
+  pull_request:
+  # pull_request_target
 
 jobs:
   pwn-job-1:
@@ -10,8 +11,8 @@ jobs:
       SOME_SECRET: ${{ secrets.FUNNY_SECRET }}
     steps:
     - uses: actions/checkout@v2
-      with:
-        ref: ${{ github.event.pull_request.head.sha }}
+      # with:
+        # ref: ${{ github.event.pull_request.head.sha }}
     - uses: actions/setup-node@v1
     - run: |
         npm install
