@@ -39,7 +39,7 @@ jobs:
             ~/.cache/ms-playwright
           key: ${{ runner.os }}-v${{ secrets.CACHE_VERSION }}-${{ hashFiles('package-lock.json') }}
       - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
+        # if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
       - run: npm run ci-check
       - run: npm run build
