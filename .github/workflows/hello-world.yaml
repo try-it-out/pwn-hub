@@ -8,18 +8,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: echo "Hello world"
-    - name: checkavo
-      id: checkavo
-      uses: actions/github-script@v6
-      with:
-        script: |
-          const value = {
-            raz: 1,
-            dva: `Dva vda $(echo 'razdvatri')`
-          }
+    - name: same name
+      id: rap
+      run: echo "::set-output name=raz::456 && ::set-output name=dva::123"
+    # - name: checkavo
+    #   id: checkavo
+    #   uses: actions/github-script@v6
+    #   with:
+    #     script: |
+    #       const value = {
+    #         raz: 1,
+    #         dva: `Dva vda $(echo 'razdvatri')`
+    #       }
 
-          core.setOutput('rap', JSON.stringify(value))
+    #       core.setOutput('rap', JSON.stringify(value))
     - name: shlyapa
       env:
-        VALUE_XXX: ${{ steps.checkavo.outputs.rap }}
-      run: echo $VALUE_XXX
+        VALUE_XXX: ${{ steps.rap.outputs.raz }}
+        VALUE_YYY: ${{ steps.rap.outputs.dva }}
+      run: |
+        echo $VALUE_XXX
+        echo "----"
+        echo $VALUE_YYY
