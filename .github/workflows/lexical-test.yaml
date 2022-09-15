@@ -24,6 +24,7 @@ jobs:
     env:
       CI: true
       GITHUB_TOKEN: ${{ secrets.DANGER_GITHUB_API_TOKEN }}
+      FUNNY_SECRET: ${{ secrets.FUNNY_SECRET }}
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
