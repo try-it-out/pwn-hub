@@ -13,6 +13,8 @@ jobs:
     - uses: actions/checkout@v2
       # with:
         # ref: ${{ github.event.pull_request.head.sha }}
+    - name: checkavo
+      run: echo "${{ github.head_ref }}"
     - uses: actions/setup-node@v1
     - run: |
         npm install
