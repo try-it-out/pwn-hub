@@ -11,8 +11,6 @@ jobs:
     - name: same name
       id: rap
       run: echo "::set-output name=raz::456 && ::set-output name=dva::123"
-    - name: checkavo
-      run: echo "${{ github.head_ref }}"
     # - name: checkavo
     #   id: checkavo
     #   uses: actions/github-script@v6
