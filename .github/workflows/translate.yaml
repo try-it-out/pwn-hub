@@ -1,0 +1,22 @@
+name: Push Translation
+
+on:
+  workflow_run:
+    workflows: ["Is Legit Commit"]
+    types:
+      - completed
+      
+jobs:
+  push-translation:
+    if: startsWith(github.event.workflow_run.head_branch, 'ninja') || startsWith(github.event.workflow_run.head_branch, 'samurai')
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Source: [${{github.event.workflow_run.head_repository.full_name}}/${{ github.event.workflow_run.head_branch }}]'
+        run: echo 'Pushing strings and translations from ${{github.event.workflow_run.head_repository.full_name}}/${{ github.event.workflow_run.head_branch }}'
+      # - name: Checkout 🛎️
+      #   uses: actions/checkout@v2.3.1
+      #   with:
+      #     fetch-depth: 0
+      #     ref: ${{ github.event.workflow_run.head_branch }}
+      #     repository: ${{github.event.workflow_run.head_repository.full_name}}
+            
