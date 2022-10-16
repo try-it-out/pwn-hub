@@ -4,12 +4,18 @@ on:
   pull_request:
     types: [opened, reopened, synchronize]
     branches:
-        - 'master*'
+    - 'master*'
         
 jobs:
-    check-branch:
-        runs-on: ubuntu-latest
-        if:  startsWith(github.head_ref, 'ninja') || startsWith(github.head_ref, 'samurai')
-        steps:
-          - name: yoyo
-            run: echo '${{ github.head_ref }} is valid branch for translation workflow'
+  check-branch:
+    runs-on: ubuntu-latest
+    if:  startsWith(github.head_ref, 'ninja') || startsWith(github.head_ref, 'samurai')
+    steps:
+      - name: yoyo
+        run: echo '${{ github.head_ref }} is valid branch for translation workflow'
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo stuff
+        run: echo '${{ github.head_ref }}'
+   
