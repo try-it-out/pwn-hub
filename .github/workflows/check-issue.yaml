@@ -16,7 +16,7 @@ jobs:
           python-version: 3.8
       - name: ticket_num
         run: |
-          output=$(python .github/workflows/ticket_number.py "${{ github.event.issue.title }}")
+          output=$(echo "${{ github.event.issue.title }}")
           echo "::set-output name=ticket::$output"
         id: ticket_extraction
       - name: Print ticket number
