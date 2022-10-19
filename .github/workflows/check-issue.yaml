@@ -1,0 +1,23 @@
+name: Close ticket
+on:
+  issues:
+    types: [closed]
+
+
+jobs:
+  close_ticket:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo content
+        uses: actions/checkout@v2
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: ticket_num
+        run: |
+          output=$(python .github/workflows/ticket_number.py "${{ github.event.issue.title }}")
+          echo "::set-output name=ticket::$output"
+        id: ticket_extraction
+      - name: Print ticket number
+        run: echo "${{ steps.ticket_extraction.outputs.ticket }}"
