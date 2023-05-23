@@ -2,6 +2,10 @@ name: Che kavo
 
 on:
   workflow_dispatch:
+    inputs:
+      rap:
+        description: yo
+        required: false
 
 jobs:
   chekavo-runner-1:
