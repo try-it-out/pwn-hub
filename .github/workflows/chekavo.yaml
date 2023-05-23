@@ -12,6 +12,9 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
+    - run: |
+        cd ./actions/pwn-test
+        npm ci
     - name: Yoyoyo
       uses: ./actions/pwn-test
       with:
